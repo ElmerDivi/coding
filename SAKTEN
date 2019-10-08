@@ -36,9 +36,11 @@ while(t):
     except:
       sys.exit()
     
+    # checks if the row is already in row or col dictionary 
     rcheck = (r in row.keys())
     ccheck = (c in col.keys())
     
+    # if any of row or column is repeated
     if rcheck or ccheck:
       if rcheck and ccheck:
         col[c] += 1
@@ -51,16 +53,18 @@ while(t):
         col[c] = 1
       else:
         pass
+   # if both points are new
     else:
       row[r] = 1
       col[c] = 1
   
+  # number of odd rows or columns
   for i in row.values():
     if i%2 == 1:
       num_odd_row += 1
   for i in col.values():
     if i%2 == 1:
       num_odd_col += 1
-  
+  # total odd points : oddrow * evencol + oddcol * evenrow
   oddpts = (n-num_odd_row)*num_odd_col + (m-num_odd_col)*num_odd_row
   print(oddpts)
